@@ -11,3 +11,10 @@ class ItineraryList(APIView):
       itineraries = Itinerary.objects.all()
       serializer = ItinerarySerializer(itineraries, many=True)
       return Response(serializer.data)
+  
+  #POST request to create new itinerary
+  def post(self, request):
+     serializer = ItinerarySerializer(data=request.data)
+     if serializer.is_valid():
+        serializer.save() #save a new record
+        return Response(serializer.data) #respond with JSON detailing what was saved
