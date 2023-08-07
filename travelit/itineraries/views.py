@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Itinerary, Reward
-from .serializers import ItinerarySerializer, RewardSerializer
+from .serializers import ItinerarySerializer, RewardSerializer, ItineraryDetailSerializer
 from django.http import Http404
 from rest_framework import status
 
@@ -42,7 +42,7 @@ class ItineraryDetail(APIView):
     #GET request for itinerary with specific pk
     def get(self, request, pk):
         itinerary = self.get_object(pk)
-        serializer = ItinerarySerializer(itinerary)
+        serializer = ItineraryDetailSerializer(itinerary)
         return Response(serializer.data)
     
 
