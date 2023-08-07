@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('itinerary/', views.ItineraryList.as_view()),
+    path('itinerary/<int:pk>/', views.ItineraryDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
