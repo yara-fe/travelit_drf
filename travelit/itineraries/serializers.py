@@ -8,6 +8,7 @@ class RewardSerializer(serializers.ModelSerializer):
         model = apps.get_model('itineraries.Reward')
         fields = '__all__'
 
+# class RewardDetailSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.amount = validated_data.get('amount', instance.amount)
         instance.giver = validated_data.get('giver', instance.giver)
@@ -15,6 +16,7 @@ class RewardSerializer(serializers.ModelSerializer):
         instance.itinerary = validated_data.get('itinerary', instance.itinerary)
         instance.comment = validated_data.get('comment', instance.comment)
         instance.reward_date = validated_data.get('reward_date', instance.reward_date)
+        instance.save()
         return instance
 
 #Convert Itinerary model to JSON
