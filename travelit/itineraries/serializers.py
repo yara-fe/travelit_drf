@@ -3,6 +3,7 @@ from django.apps import apps
 
 #Convert Reward model to JSON
 class RewardSerializer(serializers.ModelSerializer):
+    giver = serializers.ReadOnlyField(source='giver.id')
     class Meta:
         model = apps.get_model('itineraries.Reward')
         fields = '__all__'

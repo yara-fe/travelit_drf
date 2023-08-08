@@ -18,7 +18,7 @@ class CustomUserList(APIView):
     def post(self, request):
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(creator=request.user) #save a new record and hand user info to creator field
+            serializer.save() #save a new record
             return Response(
                 serializer.data, #respond with JSON detailing what was saved
                 status=status.HTTP_201_CREATED #return "Created" when new user is saved

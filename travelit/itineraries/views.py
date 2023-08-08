@@ -18,7 +18,7 @@ class ItineraryList(APIView):
     def post(self, request):
         serializer = ItinerarySerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save() #save a new record
+            serializer.save(creator=request.user) #save a new record  and hand user info to creator field
             return Response(
                 serializer.data, #respond with JSON detailing what was saved
                 status=status.HTTP_201_CREATED #return "Created" when new itinerary is saved
@@ -59,7 +59,7 @@ class RewardList(APIView):
     def post(self, request):
         serializer = RewardSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save() #save a new record
+            serializer.save(giver=request.user) #save a new record
             return Response(
                 serializer.data, #respond with JSON detailing what was saved
                 status=status.HTTP_201_CREATED #return "Created" when new record is saved
