@@ -4,6 +4,7 @@ from .models import Itinerary, Reward
 from .serializers import ItinerarySerializer, RewardSerializer, ItineraryDetailSerializer
 from django.http import Http404
 from rest_framework import status, permissions
+from .permissions import IsOwnerOrReadOnly
 
 
 class ItineraryList(APIView):
@@ -36,9 +37,13 @@ class ItineraryList(APIView):
 #Handles specific itinerary information
 class ItineraryDetail(APIView):
 
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+
     def get_object(self, pk):
         try:
-            return Itinerary.objects.get(pk=pk)
+            itinerary = Itinerary.objects.get(pk=pk)
+            self.check_object_permissions(self.request, itinerary)
+            return itinerary
         except Itinerary.DoesNotExist:
             raise Http404 #return "Not Found" if pk does not exist
         
