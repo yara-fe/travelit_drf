@@ -3,11 +3,14 @@ from rest_framework.response import Response
 from .models import Itinerary, Reward
 from .serializers import ItinerarySerializer, RewardSerializer, ItineraryDetailSerializer
 from django.http import Http404
-from rest_framework import status
+from rest_framework import status, permissions
 
 
 class ItineraryList(APIView):
 
+    #Everything is Read Only, unless you are logged in
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    
     #GET request for all itineraries
     def get(self, request):
         itineraries = Itinerary.objects.all()
