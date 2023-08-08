@@ -30,7 +30,7 @@ class ItineraryList(APIView):
         )
 
 
-#Handles specific itinerary
+#Handles specific itinerary information
 class ItineraryDetail(APIView):
 
     def get_object(self, pk):
@@ -46,7 +46,7 @@ class ItineraryDetail(APIView):
         return Response(serializer.data)
     
 
-## REWARD ##
+## REWARDS ##
 class RewardList(APIView):
 
     #GET request for all rewards
