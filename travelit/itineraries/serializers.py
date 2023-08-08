@@ -9,6 +9,8 @@ class RewardSerializer(serializers.ModelSerializer):
 
 #Convert Itinerary model to JSON
 class ItinerarySerializer(serializers.ModelSerializer):
+    #handle creator field as read only
+    creator = serializers.ReadOnlyField(source='creator.id')
     class Meta:
         model = apps.get_model('itineraries.Itinerary')
         fields = '__all__'

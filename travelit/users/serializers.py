@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.apps import CustomUser
+from .models import CustomUser
 
 #Convert Reward model to JSON
 class CustomUserSerializer(serializers.ModelSerializer):
