@@ -10,7 +10,7 @@ class ItineraryList(APIView):
 
     #Everything is Read Only, unless you are logged in
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    
+
     #GET request for all itineraries
     def get(self, request):
         itineraries = Itinerary.objects.all()
@@ -48,7 +48,23 @@ class ItineraryDetail(APIView):
         serializer = ItineraryDetailSerializer(itinerary)
         return Response(serializer.data)
     
-
+    #Replace a record with an updated version
+    def put(self, request, pk):
+        itinerary = self.get_object(pk)
+        serializer = ItineraryDetailSerializer(
+            instance=itinerary,
+            data=request.data,
+            partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_200_OK)
+        
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    
 ## REWARDS ##
 class RewardList(APIView):
 
