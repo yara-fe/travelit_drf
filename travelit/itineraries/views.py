@@ -76,7 +76,7 @@ class ItineraryDetail(APIView):
 class RewardList(APIView):
      #Everything is Read Only, unless you are logged in
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    
+
     #GET request for all rewards
     def get(self, request):
         rewards = Reward.objects.all()
@@ -100,10 +100,34 @@ class RewardList(APIView):
 
 class RewardDetail(APIView):
 
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+
     def get_object(self, pk):
-        return Reward.objects.get(pk=pk)
+        try:
+            reward = Reward.objects.get(pk=pk)
+            self.check_object_permissions(self.request, reward)
+            return reward
+        except Reward.DoesNotExist:
+            raise Http404 #return "Not Found" if pk does not exist
     
     def get(self,request, pk):
         reward = self.get_object(pk)
         serializer = RewardSerializer(reward)
         return Response(serializer.data)
+    
+    #Replace a record with an updated version
+    def put(self, request, pk):
+        reward = self.get_object(pk)
+        serializer = RewardSerializer(
+            instance=reward,
+            data=request.data,
+            partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_200_OK)
+        
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
