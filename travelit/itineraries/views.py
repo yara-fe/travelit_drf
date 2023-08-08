@@ -69,10 +69,14 @@ class ItineraryDetail(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
-    
-## REWARDS ##
-class RewardList(APIView):
 
+
+## REWARDS ##
+
+class RewardList(APIView):
+     #Everything is Read Only, unless you are logged in
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    
     #GET request for all rewards
     def get(self, request):
         rewards = Reward.objects.all()
@@ -93,3 +97,13 @@ class RewardList(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+
+class RewardDetail(APIView):
+
+    def get_object(self, pk):
+        return Reward.objects.get(pk=pk)
+    
+    def get(self,request, pk):
+        reward = self.get_object(pk)
+        serializer = RewardSerializer(reward)
+        return Response(serializer.data)

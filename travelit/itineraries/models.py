@@ -22,12 +22,12 @@ class Itinerary(models.Model):
 class Reward(models.Model):
     amount = models.IntegerField
     giver = models.ForeignKey(
-        get_user_model(),
+        get_user_model(), #related model
         on_delete=models.CASCADE,
-        related_name='rewards'
+        related_name='rewards' #sets up property in get_user_model
     ) 
-    anonymous = models.BooleanField()
-    itinerary_id = models.ForeignKey(
+    # anonymous = models.BooleanField()
+    itinerary = models.ForeignKey(
         'Itinerary', #model which Reward is related to
         on_delete=models.CASCADE, #delete Rewards if Itinerary is deleted
         related_name='rewards' #allows Django to set up a "property" in Itinerary model
