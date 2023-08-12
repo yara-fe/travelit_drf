@@ -2,13 +2,13 @@
 by Yara Fe Tuguinay
 She Codes Crowdsourcing Project based on Django Rest Framework
 
-## About
+## ❕ About
 Ready to explore the world without getting lost in the details? Introducing SHAREit (formerly TRAVELit) - your ultimate travel companion! 🌏✈️ 
 Say goodbye to travel planning headaches and hello to tried and tested itineraries from fellow travellers! 
 Use this crowdsourcing platform to find itineraries based on your destination, travel period, budget, etc.
 Have an awesome itinerary? Share it with us and our community, and if someone likes it, they might even give you a reward!
 
-## Features
+## ⭐ Features
 SHAREit includes the following features:
 |  FEATURE  |  DESCRIPTION  |
 |---|---|
@@ -25,7 +25,7 @@ SHAREit includes the following features:
 * [] User can search for an itinerary
 * [] User can add tags to an itinerary that's searchable
 
-## API Specification
+## 📃 API Specification
 | **HTTP Method** | **URL** | **Purpose** | **Request Body** | **Successful Response Code** | **Authentication/ Authorization** |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | **GET** | /itinerary/ | Returns all itineraries | N/A | 200 - OK | N/A |
@@ -45,16 +45,14 @@ SHAREit includes the following features:
 | **DELETE** | /users/1 | Deletes the user with ID=1 | N/A | 204 - No Content | Must be logged in<br>     Must own the user account or is a superuser or admin |
 | **POST** | /api-token-auth/ | Creates a token for a user | Username and password | 200 - OK | Must have a user account |
 
-## Database Schema
+## 📅 Database Schema
 
-![image info goes here](./docs/image.png)
+![ERD](https://github.com/yara-fe/travelit_drf/blob/b3d1a66f33309330f219da428c5c7fc0d80bb9c3/screenshots/1_Database_ERD.png)
 
-## Wireframes
-{{ Insert your wireframes }}
+## ✏ Wireframes
+![Wireframe](https://github.com/yara-fe/travelit_drf/blob/b3d1a66f33309330f219da428c5c7fc0d80bb9c3/screenshots/2_HomePage_Wireframe.png)
 
-![image info goes here](./docs/image.png)
-
-## Colour Scheme
+### Colour Scheme
 |Name| HEX
 |:---:|:---:
 |midnight-green| #005454ff
@@ -65,20 +63,17 @@ SHAREit includes the following features:
 |magnolia| #F2F3FFff
 |asparagus| #629255ff
 
-## Fonts
-* BebasNeue
-* MuseoSlab
-* MuseoSans
-* Lato
+### Fonts
+Fonts to be used in this site include __BebasNeue, MuseoSlab, MuseoSans, Lato__
 
-## Submission Documentation
 
-Deployed Project: [SHAREit Deployed Website](https://travelit.fly.dev/itinerary/)
+## 📃 Submission Documentation
+**Deployed Project**: [SHAREit Deployed Website](https://travelit.fly.dev/itinerary/)
 
 ### How To Run
 
 Step | Action | Command
-| :--- | :--- | :--- 
+| :---: | :--- | :--- 
 | 1 | Clone repo to your local machine - run git bash from local directory and clone repo via terminal| `git clone https://github.com/yara-fe/travelit_drf.git`
 | 2 | Check pip version | `python -m pip --version`
 | 3 | If not available, run command to install |`python -m ensurepip --upgrade`
@@ -126,6 +121,10 @@ A token is required to authorize a user to use other methods, such as POST, DELE
 	}`
 8. Click 'Send'. If successful, you should receive a response with status code 200 OK and a token will be created.
 
+
+https://github.com/yara-fe/travelit_drf/assets/133723493/8d578602-c86c-4adf-999b-cebe7ec6c767
+
+
 ### Use Token for Authorization
 You can now enter this token in new HTTP Requests that you create that requires authorization. 
 
@@ -133,27 +132,25 @@ You can now enter this token in new HTTP Requests that you create that requires 
 10. Under Token, paste the token you have created for your user.
 11. In Prefix, type in Token. Lastly, ensure Enabled is ticked. 
 12. You can now return to the Body/JSON tab and send your request. Your request should be successful as your user authorization is now set.
+<br/>
 
-### Screenshots
+## 📷 Project Screenshots
 The following are sample screenshots of request methods performed via Insomnia. For more screenshots, please refer to the screenshots folder in the project.
 
-* [x] A successful GET method for all itineraries - Status Code 200 OK
-* [ ] ![](screenshots/Itinerary - GET ALL - 200 OK.png)
+* [x] **A successful GET method for one itinerary - Status Code 200 OK**<br/>
+![Get Request - Single Instance](https://github.com/yara-fe/travelit_drf/blob/b3d1a66f33309330f219da428c5c7fc0d80bb9c3/screenshots/Itinerary%20-%20GET%20ALL%20-%20200%20OK.png)
 
-* [x] A successful GET method for one itinerary - Status Code 200 OK<br/>
-(![Get Request - Single Instance](screenshots/Itinerary - GET SINGLE - 200 OK.png))
+* [x] **A successful POST method for a token - Status Code 201 Created**
+![POST Token](https://github.com/yara-fe/travelit_drf/blob/b3d1a66f33309330f219da428c5c7fc0d80bb9c3/screenshots/API-Token-Auth%20-%20POST%20-%20201%20Created.png)
 
-* [x] A successful POST method for a token - Status Code 201 Created
-![image info goes here](./docs/image.png)
-
-
-* [x] A successful POST method for a reward - Status Code 201 Created
-
-* [x] An unsuccessful POST method for a reward due to user not being authorized - Status Code 401 Unauthorized
+* [x] **An unsuccessful POST method for a itinerary due to user not being authorized - Status Code 401 Unauthorized**
+![POST Fail](https://github.com/yara-fe/travelit_drf/blob/b3d1a66f33309330f219da428c5c7fc0d80bb9c3/screenshots/Itinerary%20-%20POST%20-%20401%20Unauthorized.png)
 
 * [x] An unsuccessful PUT (i.e. update) method for a reward due to user not being the owner of reward - Status Code 403 Forbidden
+![PUT FAIL](https://github.com/yara-fe/travelit_drf/blob/b3d1a66f33309330f219da428c5c7fc0d80bb9c3/screenshots/Rewards%20-%20PUT%20-%20403%20Forbidden.png)
 
-* [x] A successful DELETE method for an itinerary - Status Code 204 No Content
+* [x] **A successful DELETE method for an itinerary - Status Code 204 No Content**
+![DELETE](https://github.com/yara-fe/travelit_drf/blob/b3d1a66f33309330f219da428c5c7fc0d80bb9c3/screenshots/Itinerary%20-%20DELETE%20-%20204%20No%20Content.png)
 
 
 
