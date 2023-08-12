@@ -69,6 +69,12 @@ class ItineraryDetail(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+    
+    # Delete a record
+    def delete(self, request, pk):
+        itinerary = self.get_object(pk)
+        itinerary.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 ## REWARDS ##
@@ -131,3 +137,9 @@ class RewardDetail(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+    
+    # Delete a reward record
+    def delete(self, request, pk):
+        reward = self.get_object(pk)
+        reward.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
