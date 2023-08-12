@@ -1,9 +1,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
-from rest_framework import status
+from rest_framework import status, permissions
 from .models import CustomUser
 from .serializers import CustomUserSerializer
+from .permissions import IsUserOrReadOnly
 
 
 class CustomUserList(APIView):
@@ -33,9 +34,14 @@ class CustomUserList(APIView):
 #Handles specific user information
 class CustomUserDetail(APIView):
 
+    #Everything is Read Only, unless you are logged in
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsUserOrReadOnly]
+
     def get_object(self, pk):
         try:
-            return CustomUser.objects.get(pk=pk)
+            user = CustomUser.objects.get(pk=pk)
+            self.check_object_permissions(self.request, user) #check whether the user making the request has the necessary permissions to access the user object
+            return user
         except CustomUser.DoesNotExist:
             raise Http404 #return "Not Found" if pk does not exist
         
@@ -44,3 +50,27 @@ class CustomUserDetail(APIView):
         user = self.get_object(pk)
         serializer = CustomUserSerializer(user)
         return Response(serializer.data)
+    
+    #Replace a user record with an updated version (permission required)
+    def put(self, request, pk):
+        user = self.get_object(pk)
+        serializer = CustomUserSerializer(
+            instance=user,
+            data=request.data,
+            partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_200_OK)
+        
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    
+    # Delete a user (permission required)
+    def delete(self, request, pk):
+        user = self.get_object(pk)
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
