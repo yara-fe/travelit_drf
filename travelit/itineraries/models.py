@@ -20,7 +20,7 @@ class Itinerary(models.Model):
 
 
 class Reward(models.Model):
-    amount = models.IntegerField
+    amount = models.IntegerField()
     giver = models.ForeignKey(
         get_user_model(), #related model
         on_delete=models.CASCADE,

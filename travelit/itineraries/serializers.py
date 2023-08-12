@@ -8,7 +8,6 @@ class RewardSerializer(serializers.ModelSerializer):
         model = apps.get_model('itineraries.Reward')
         fields = '__all__'
 
-# class RewardDetailSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.amount = validated_data.get('amount', instance.amount)
         instance.giver = validated_data.get('giver', instance.giver)
