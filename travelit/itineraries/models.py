@@ -26,7 +26,7 @@ class Reward(models.Model):
         on_delete=models.CASCADE,
         related_name='rewards' #sets up property in get_user_model
     ) 
-    # anonymous = models.BooleanField()
+    anonymous = models.BooleanField()
     itinerary = models.ForeignKey(
         'Itinerary', #model which Reward is related to
         on_delete=models.CASCADE, #delete Rewards if Itinerary is deleted
