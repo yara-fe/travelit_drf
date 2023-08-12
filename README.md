@@ -1,12 +1,12 @@
 # SHAREit (formerly TRAVELit) - DRF Backend
-by Yara Fe Tuguinay
+by _Yara Fe Tuguinay_ <br/>
 She Codes Crowdsourcing Project based on Django Rest Framework
 
 ## ❕ About
-Ready to explore the world without getting lost in the details? Introducing SHAREit (formerly TRAVELit) - your ultimate travel companion! 🌏✈️ 
-Say goodbye to travel planning headaches and hello to tried and tested itineraries from fellow travellers! 
-Use this crowdsourcing platform to find itineraries based on your destination, travel period, budget, etc.
-Have an awesome itinerary? Share it with us and our community, and if someone likes it, they might even give you a reward!
+Ready to explore the world without getting lost in the details? Introducing __SHAREit__ (formerly TRAVELit) - your ultimate travel companion! ✈️ 
+Say goodbye to travel planning headaches and hello to tried and tested itineraries from fellow travellers! <br/>
+Use __SHAREit__ to find itineraries based on your destination, travel period, budget, etc. <br/>
+Have an awesome itinerary? _"SHAREit"_ with us and our community, and if someone likes it, they might even give you a reward!
 
 ## ⭐ Features
 SHAREit includes the following features:
