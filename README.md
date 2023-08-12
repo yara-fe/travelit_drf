@@ -10,18 +10,13 @@ Have an awesome itinerary? Share it with us and our community, and if someone li
 
 ## Features
 SHAREit includes the following features:
-| FEATURE | DESCRIPTION 
-| Account Creation | Anyone can create an account
-| User Profile |  <ul><li>An authenticated user can view details of their account </li>
-<li> An authenticated user can update or delete their profile </li>
-| Itineraries | <ul><li>An authenticated user can create an itinerary</li>
-<li>An authenticated user can view all itineraries</li>
-<li>An authenticated user can view details of an itinerary</li>
-<li>An authenticated user can only update or delete their own itineraries</li>
-| Rewards | <ul><li>An authenticated user can award a reward against an itinerary or itineraries</li>
-<li>An authenticated user can view all rewards</li>
-<li>An authenticated user can view details of a reward</li>
-<li>An authenticated user can only update or delete their own rewards</li>
+|  FEATURE  |  DESCRIPTION  |
+|---|---|
+|  Account Creation  |  Anyone can create an account |
+|  User Profile  |  An authenticated user can view details of their account <br> An authenticated user can update or delete their profile |
+|  Itineraries  |  An authenticated user can create an itinerary<br> An authenticated user can view all itineraries<br> An authenticated user can view details of an itinerary<br> An authenticated user can only update or delete their own itineraries |
+|  Rewards  | An authenticated user can award   a reward against an itinerary or itineraries<br>An authenticated user can view all rewards<br>An authenticated user can view details of a reward<br>An authenticated user can only update or delete their own rewards |
+| Token Creation | A user can create a token to be used for API authentication |
 
 ### Stretch Goals
 * [] User cannot reward their own itineraries
@@ -60,13 +55,15 @@ SHAREit includes the following features:
 ![image info goes here](./docs/image.png)
 
 ## Colour Scheme
---midnight-green: #005454ff;
---cal-poly-green: #27480Bff;
---moss-green: #A0A44Aff;
---taupe-gray: #847D8Aff;
---french-gray: #AEABB2ff;
---magnolia: #F2F3FFff;
---asparagus: #629255ff;
+|Name| HEX
+|:---:|:---:
+|midnight-green| #005454ff
+|cal-poly-green| #27480Bff
+|moss-green| #A0A44Aff
+|taupe-gray| #847D8Aff
+|french-gray| #AEABB2ff
+|magnolia| #F2F3FFff
+|asparagus| #629255ff
 
 ## Fonts
 * BebasNeue
@@ -120,6 +117,7 @@ Step | Action | Command
 
 ### Create a User Token
 A token is required to authorize a user to use other methods, such as POST, DELETE and UPDATE
+
 6. Create a new HTTP Request and set the method to POST. This time enter the API-Token-Auth endpoint: 'https://travelit.fly.dev/api-token-auth/'
 7. Set the Body type to JSON and enter the following:
     `{
@@ -129,7 +127,8 @@ A token is required to authorize a user to use other methods, such as POST, DELE
 8. Click 'Send'. If successful, you should receive a response with status code 200 OK and a token will be created.
 
 ### Use Token for Authorization
-You can now enter this token in new HTTP Requests that you create that requires authorization. To do so, follow these steps:
+You can now enter this token in new HTTP Requests that you create that requires authorization. 
+
 9. Once you have created a HTTP request, go to the Auth tab and select Bearer Token
 10. Under Token, paste the token you have created for your user.
 11. In Prefix, type in Token. Lastly, ensure Enabled is ticked. 
@@ -139,13 +138,14 @@ You can now enter this token in new HTTP Requests that you create that requires 
 The following are sample screenshots of request methods performed via Insomnia. For more screenshots, please refer to the screenshots folder in the project.
 
 * [x] A successful GET method for all itineraries - Status Code 200 OK
-![image info goes here](./docs/image.png)
+* [ ] ![](screenshots/Itinerary - GET ALL - 200 OK.png)
 
-* [x] A successful GET method for one itinerary - Status Code 200 OK
-![image info goes here](./docs/image.png)
+* [x] A successful GET method for one itinerary - Status Code 200 OK<br/>
+(![Get Request - Single Instance](screenshots/Itinerary - GET SINGLE - 200 OK.png))
 
 * [x] A successful POST method for a token - Status Code 201 Created
 ![image info goes here](./docs/image.png)
+
 
 * [x] A successful POST method for a reward - Status Code 201 Created
 
