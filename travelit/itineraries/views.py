@@ -53,7 +53,7 @@ class ItineraryDetail(APIView):
         serializer = ItineraryDetailSerializer(itinerary)
         return Response(serializer.data)
     
-    #Replace a record with an updated version
+    # Replace a record with an updated version
     def put(self, request, pk):
         itinerary = self.get_object(pk)
         serializer = ItineraryDetailSerializer(
